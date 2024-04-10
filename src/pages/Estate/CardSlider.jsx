@@ -8,11 +8,8 @@ const CardSlider = ({ estateData }) => {
         <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y, EffectCoverflow]}
             effect='coverflow'
-            spaceBetween={0}
             slidesPerView={window.innerWidth < 768 ? 1 : 3}
-            // navigation
             pagination={{ clickable: true }}
-            // scrollbar={{ draggable: true }}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
         >
