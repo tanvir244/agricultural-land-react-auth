@@ -1,0 +1,110 @@
+[
+    {
+        "id": 1,
+        "estate_title": "Sprawling Agricultural Land",
+        "image": "https://i.ibb.co/54Vgqsx/food-22.jpg",
+        "segment_name": "Agricultural Land",
+        "description": "Expansive fertile land suitable for various crops. Well-irrigated and ready for cultivation.",
+        "price": "$500,000",
+        "status": "sale",
+        "area": "100 acres",
+        "location": "Rural County, State",
+        "facilities": ["Water irrigation system", "Fenced perimeters", "Access roads"]
+      },
+      {
+        "id": 2,
+        "estate_title": "Picturesque Ranch Retreat",
+        "image": "https://i.ibb.co/54Vgqsx/food-22.jpg",
+        "segment_name": "Ranch",
+        "description": "Scenic ranch with rolling hills, grazing pastures, and a charming farmhouse. Perfect for livestock farming or leisure retreats.",
+        "price": "$1,200,000",
+        "status": "sale",
+        "area": "300 acres",
+        "location": "Mountain Valley, State",
+        "facilities": ["Barns and stables", "Fishing ponds", "Trails for horseback riding"]
+      },
+      {
+        "id": 3,
+        "estate_title": "Organic Farm Oasis",
+        "image": "https://i.ibb.co/nPM2BMr/41.jpg",
+        "segment_name": "Farm",
+        "description": "Certified organic farm producing fruits, vegetables, and herbs. Equipped with greenhouses and processing facilities.",
+        "price": "$900,000",
+        "status": "sale",
+        "area": "50 acres",
+        "location": "Fertile Valley, State",
+        "facilities": ["Greenhouses", "Processing shed", "Farmhouse"]
+      },
+      {
+        "id": 4,
+        "estate_title": "Award-Winning Vineyard Estate",
+        "image": "https://i.ibb.co/54Vgqsx/food-22.jpg",
+        "segment_name": "Vineyard",
+        "description": "Premium vineyard with a variety of grape cultivars. Renowned for its fine wines and scenic beauty.",
+        "price": "$2,500,000",
+        "status": "sale",
+        "area": "80 acres",
+        "location": "Wine Country, State",
+        "facilities": ["Wine tasting room", "Cellars", "Vineyard cottages"]
+      },
+      {
+        "id": 5,
+        "estate_title": "Untouched Wilderness Preserve",
+        "image": "https://i.ibb.co/54Vgqsx/food-22.jpg",
+        "segment_name": "Forest",
+        "description": "Virgin forest with diverse flora and fauna. Ideal for conservation efforts, eco-tourism, or sustainable timber harvesting.",
+        "price": "$3,000,000",
+        "status": "sale",
+        "area": "500 acres",
+        "location": "Wildlife Sanctuary, State",
+        "facilities": ["Hiking trails", "Cabins", "Observation decks"]
+      },
+      {
+        "id": 6,
+        "estate_title": "Historic Plantation Estate",
+        "image": "https://i.ibb.co/54Vgqsx/food-22.jpg",
+        "segment_name": "Plantation",
+        "description": "Storied plantation with a rich history. Features grand manor house, gardens, and agricultural fields.",
+        "price": "$4,500,000",
+        "status": "sale",
+        "area": "200 acres",
+        "location": "Plantation County, State",
+        "facilities": ["Manor house", "Gardens", "Guest cottages"]
+      },
+      {
+        "id": 7,
+        "estate_title": "Prime Farmland with River Frontage",
+        "image": "https://i.ibb.co/54Vgqsx/food-22.jpg",
+        "segment_name": "Agricultural Land",
+        "description": "Highly fertile land bordered by a picturesque river. Ideal for crop cultivation or agro-tourism development.",
+        "price": "$750,000",
+        "status": "sale",
+        "area": "120 acres",
+        "location": "River Valley, State",
+        "facilities": ["River access", "Arable soil", "Scenic views"]
+      },
+      {
+        "id": 8,
+        "estate_title": "Equestrian Paradise Ranch",
+        "image": "https://i.ibb.co/54Vgqsx/food-22.jpg",
+        "segment_name": "Ranch",
+        "description": "Elegant ranch estate with top-notch equestrian facilities. Perfect for horse enthusiasts or luxury retreats.",
+        "price": "$3,800,000",
+        "status": "sale",
+        "area": "400 acres",
+        "location": "Equestrian County, State",
+        "facilities": ["Riding arenas", "Stables", "Luxury lodge"]
+      },
+      {
+        "id": 9,
+        "estate_title": "Diversified Organic Farmstead",
+        "image": "https://i.ibb.co/54Vgqsx/food-22.jpg",
+        "segment_name": "Farm",
+        "description": "Integrated organic farm producing crops, livestock, and dairy. Includes farmhouse and processing facilities.",
+        "price": "$1,600,000",
+        "status": "sale",
+        "area": "80 acres",
+        "location": "Sustainable Valley, State",
+        "facilities": ["Livestock barns", "Dairy parlor", "Farmhouse with modern amenities"]
+      }                                          
+]
