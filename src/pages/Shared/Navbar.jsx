@@ -1,6 +1,17 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import userImage from '../../../public/user.png';
+
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logOut()
+        .then()
+        .catch()
+    }
 
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -8,7 +19,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100 my-4">
+        <div className="navbar bg-base-100 my-2">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -26,7 +37,22 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn px-8 bg-gray-600 text-white">Login</a>
+                <div className="flex items-center gap-2">
+                    {user ? (
+                        <div className="w-10 rounded-full cursor-pointer">
+                            <img src={userImage} alt="" />
+                        </div>
+                    ) : (
+                        <Link to="/login">
+                            <a className="btn px-8 bg-gray-600 text-white">Login</a>
+                        </Link>
+                    )}
+                    {user && (
+
+                            <a onClick={handleLogout} className="btn px-8 bg-gray-600 text-white">Signout</a>
+
+                    )}
+                </div>
             </div>
         </div>
     );
