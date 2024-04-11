@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import PropTypes from 'prop-types';
 import 'swiper/swiper-bundle.css';
 import 'swiper/css/effect-coverflow';
+import { Link } from 'react-router-dom';
 
 const CardSlider = ({ estateData }) => {
     return (
@@ -28,7 +29,9 @@ const CardSlider = ({ estateData }) => {
                                 }
                                 <div className='flex justify-between items-center font-bold mt-4'>
                                     <h1 className='text-2xl text-rose-500'>{eachData.price}</h1>
-                                    <button className="btn bg-teal-600 text-white text-base">View Details</button>
+                                    <Link to={`/estate_detais/${eachData.id}`}>
+                                        <button className="btn bg-teal-600 text-white text-base">View Details</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
