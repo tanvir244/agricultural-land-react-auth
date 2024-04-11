@@ -1,6 +1,7 @@
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
+import PropTypes from 'prop-types';
 
 const Slider = ({ slides }) => {
     return (
@@ -19,11 +20,11 @@ const Slider = ({ slides }) => {
                     <SwiperSlide className='relative' key={slide.image}>
                         <div className='relative w-full h-[80vh] rounded-xl overflow-hidden'>
                             <img className='absolute inset-0 w-full h-full object-cover' src={slide.image} alt="" />
-                            <div className='absolute inset-0 w-full h-full bg-gradient-to-r from-black opacity-70 to-transparent'></div>
+                            <div className='absolute inset-0 w-full h-full bg-gradient-to-r from-black opacity-80 to-transparent'></div>
                         </div>
 
                         <div className='absolute top-[25%] px-8 md:px-16 space-y-6'>
-                            <h1 className='text-4xl font-bold text-teal-400 md:w-1/2'>{slide.title}</h1>
+                            <h1 className='text-5xl font-bold text-teal-400 md:w-1/2'>{slide.title}</h1>
                             <p className='text-white md:w-[70%]'>{slide.description}</p>
                         </div>
                     </SwiperSlide>
@@ -34,3 +35,7 @@ const Slider = ({ slides }) => {
 };
 
 export default Slider;
+
+Slider.propTypes = {
+    slides: PropTypes.node
+}

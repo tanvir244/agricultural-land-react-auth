@@ -1,5 +1,6 @@
 import { Navigation, Pagination, Scrollbar, A11y, EffectCoverflow } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import PropTypes from 'prop-types';
 import 'swiper/swiper-bundle.css';
 import 'swiper/css/effect-coverflow';
 
@@ -17,7 +18,7 @@ const CardSlider = ({ estateData }) => {
                 estateData.map((eachData) => (
                     <SwiperSlide className='my-8' key={eachData.id}>
                         <div className="card shadow-xl">
-                            <figure><img src={eachData.image} alt="Shoes" /></figure>
+                            <figure><img className='h-[255px] w-full' src={eachData.image} alt="Shoes" /></figure>
                             <div className="card-body">
                                 <h2 className="card-title font-bold">{eachData.estate_title}</h2>
                                 {
@@ -39,3 +40,7 @@ const CardSlider = ({ estateData }) => {
 };
 
 export default CardSlider;
+
+CardSlider.propTypes = {
+    estateData: PropTypes.node
+}
