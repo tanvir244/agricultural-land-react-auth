@@ -3,9 +3,17 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Shared/Navbar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+// react icons
+import { FaGoogle } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+// react tostify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, googleLogin, githubLogin, facebookLogin, twitterLogin } = useContext(AuthContext);
     const [loginError, setLoginError] = useState([]);
 
     const handleLogin = e => {
@@ -20,6 +28,7 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 console.log(result.user);
+                toast.success("Logged in successfully.")
             })
             .catch(error => {
                 setLoginError('Your email or password incorrect, try again');
@@ -44,7 +53,7 @@ const Login = () => {
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-bold text-teal-600">Password</span>
-                            </label>
+                            </label> 
                             <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
@@ -56,11 +65,21 @@ const Login = () => {
                         {
                             loginError && <p className="text-red-500 font-semibold text-center">{loginError}</p>
                         }
-                        <p className="mt-4">Dont have an account? <Link className="text-red-500 font-bold" to='/register'>Register</Link></p>
+                        <div className="space-y-4 mt-2">
+                            <h3 className="text-center border-b-2 pb-1 text-gray-700 font-semibold">Continue with</h3>
+                            <ul className="flex gap-6 justify-center">
+                                <li onClick={() => googleLogin()} className="text-4xl"><button><FaGoogle /></button></li>
+                                <li onClick={() => githubLogin()} className="text-4xl"><button><FaGithub /></button></li>
+                                <li onClick={() => facebookLogin()} className="text-4xl"><button><FaFacebook /></button></li>
+                                <li onClick={() => twitterLogin()} className="text-4xl"><button><FaXTwitter /></button></li>
+                            </ul>
+                        </div>
+                        <p className="mt-6">Dont have an account? <Link className="text-red-500 font-bold" to='/register'>Register</Link></p>
                     </form>
                 </div>
             </div>
             <Footer></Footer>
+            <ToastContainer />
         </div>
     );
 };

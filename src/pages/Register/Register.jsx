@@ -4,6 +4,9 @@ import Navbar from "../Shared/Navbar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
+// react tostify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -34,10 +37,11 @@ const Register = () => {
 
         // create user 
         createUser(email, password)
-        .then(result => {
+        .then(() => {
+            toast.success("Registration successfully complete.");
             updateUserProfile(name, photo)
             .then(() => {
-                console.log(result);
+                
             })
         })
         .catch(error => {
@@ -93,6 +97,7 @@ const Register = () => {
                 </div>
             </div>
             <Footer></Footer>
+            <ToastContainer />
         </div>
     );
 };
