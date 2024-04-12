@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import userImage from '../../../public/user.png';
-
+import './Navbar.css';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -12,6 +11,8 @@ const Navbar = () => {
         .then()
         .catch()
     }
+
+    // custom css for tooltip effect
 
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -39,8 +40,9 @@ const Navbar = () => {
             <div className="navbar-end">
                 <div className="flex items-center gap-2">
                     {user ? (
-                        <div className="w-10 rounded-full cursor-pointer">
-                            <img src={userImage} alt="" />
+                        <div className="tooltip w-12 h-12">
+                            <img className="w-full h-full object-cover rounded-full cursor-pointer mb-2" src={user?.photoURL || "https://i.ibb.co/TmsrwQs/user.png"} alt="" />
+                            <span className="tooltip-text">{user.displayName}</span>
                         </div>
                     ) : (
                         <Link to="/login">

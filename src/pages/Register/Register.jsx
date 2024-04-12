@@ -4,8 +4,9 @@ import Navbar from "../Shared/Navbar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
+
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const [registerError, setRegisterError] = useState([]);
 
     const handleRegister = e => {
@@ -34,11 +35,13 @@ const Register = () => {
         // create user 
         createUser(email, password)
         .then(result => {
-            console.log(result.user);
+            updateUserProfile(name, photo)
+            .then(() => {
+                console.log(result);
+            })
         })
         .catch(error => {
             console.log(error);
-            setRegisterError(error);
         })
     }
 
@@ -67,7 +70,8 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text font-bold text-teal-600">Photo URL</span>
                             </label>
-                            <input type="text" placeholder="Photo url" className="input input-bordered" required />
+                            <input type="text" name="photo" placeholder="Photo url" className="input input-bordered"
+                             required />
                         </div>
                         <div className="form-control">
                             <label className="label">
