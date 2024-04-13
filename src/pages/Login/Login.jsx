@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Navbar from "../Shared/Navbar";
 import { useContext, useState } from "react";
@@ -15,6 +15,9 @@ import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
     const { signIn, googleLogin, githubLogin, facebookLogin, twitterLogin } = useContext(AuthContext);
     const [loginError, setLoginError] = useState([]);
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log('location in the login page', location);
 
     const handleLogin = e => {
         e.preventDefault();
@@ -28,21 +31,21 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 console.log(result.user);
-                toast.success("Logged in successfully.")
+                // navigate after login 
+                navigate(location?.state ? location.state : '/');
+                toast.success("Logged in successfully.");
             })
-            .catch(error => {
+            .catch(() => {
                 setLoginError('Your email or password incorrect, try again');
             })
     }
 
     return (
         <div>
-            <div className="w-11/12 md:max-w-6xl mx-auto">
-                <Navbar></Navbar>
-            </div>
+            <Navbar></Navbar>
             <div className="space-y-6 py-20 bg-[#d2d8d3]">
                 <h1 className="text-center text-4xl text-teal-700 font-bold my-2">Please Login</h1>
-                <div className="card shrink-0 max-w-sm mx-auto shadow-2xl bg-base-100">
+                <div className="card shrink-0 w-11/12 md:max-w-sm mx-auto shadow-2xl bg-base-100">
                     <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
                             <label className="label">

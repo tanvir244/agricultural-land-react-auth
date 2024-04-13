@@ -45,5 +45,5 @@ const CardSlider = ({ estateData }) => {
 export default CardSlider;
 
 CardSlider.propTypes = {
-    estateData: PropTypes.node
+    estateData: PropTypes.array.isRequired
 }

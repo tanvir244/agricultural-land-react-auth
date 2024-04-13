@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import CardSlider from "./CardSlider";
-// import estateData from "./estate.json";
 
 const Estate = () => {
     const [estateData, setEstateData] = useState([]);
@@ -20,3 +19,4 @@ const Estate = () => {
 };
 
 export default Estate;
+

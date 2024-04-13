@@ -4,6 +4,7 @@ import 'swiper/swiper-bundle.css';
 import PropTypes from 'prop-types';
 
 const Slider = ({ slides }) => {
+
     return (
         <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -37,5 +38,5 @@ const Slider = ({ slides }) => {
 export default Slider;
 
 Slider.propTypes = {
-    slides: PropTypes.node
+    slides: PropTypes.array.isRequired
 }

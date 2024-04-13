@@ -18,14 +18,17 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     // create user 
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     // update user profile
     const updateUserProfile = (name, image) => {
+        setLoading(true);
         updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: image
@@ -34,16 +37,19 @@ const AuthProvider = ({ children }) => {
 
     // sign in user 
     const signIn = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     // logout
     const logOut = () => {
+        setLoading(true);
         return signOut(auth);
     }
 
     // Google login 
     const googleLogin = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider)
             .then(() => {
                 toast.success("Logged in successfully.");
@@ -51,6 +57,7 @@ const AuthProvider = ({ children }) => {
     }
     // Github login
     const githubLogin = () => {
+        setLoading(true);
         return signInWithPopup(auth, githubProvider)
             .then(() => {
                 toast.success("Logged in successfully.");
@@ -58,6 +65,7 @@ const AuthProvider = ({ children }) => {
     }
     // Facebook login
     const facebookLogin = () => {
+        setLoading(true);
         return signInWithPopup(auth, facebookProvider)
             .then(() => {
                 toast.success("Logged in successfully.");
@@ -68,6 +76,7 @@ const AuthProvider = ({ children }) => {
     }
     // Twitter login
     const twitterLogin = () => {
+        setLoading(true);
         return signInWithPopup(auth, twitterProvider)
             .then(() => {
                 toast.success("Logged in successfully.");
@@ -79,6 +88,7 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             console.log('user in the auth state change', currentUser);
             setUser(currentUser);
+            setLoading(false);
         });
         return () => {
             unSubscribe();
@@ -87,6 +97,7 @@ const AuthProvider = ({ children }) => {
 
     const authInfo = {
         user,
+        loading,
         createUser,
         updateUserProfile,
         signIn,

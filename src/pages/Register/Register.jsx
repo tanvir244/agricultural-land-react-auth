@@ -56,7 +56,7 @@ const Register = () => {
             </div>
             <div className="space-y-6 py-20 bg-[#d2d8d3]">
                 <h1 className="text-center text-4xl text-teal-700 font-bold my-2">Register Here</h1>
-                <div className="card shrink-0 w-[85%] md:w-[55%] lg:w-[35%] mx-auto shadow-2xl bg-base-100">
+                <div className="card shrink-0 w-11/12 md:w-[55%] lg:w-[35%] mx-auto shadow-2xl bg-base-100">
                     <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">
                             <label className="label">
