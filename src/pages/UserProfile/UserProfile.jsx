@@ -5,8 +5,13 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 
 const UserProfile = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     console.log(user);
+    const handleLogOut = () => {
+        logOut()
+        .then()
+        .catch()
+    }
 
     return (
         <div>
@@ -34,7 +39,11 @@ const UserProfile = () => {
                                         <p className="text-sm text-[#10243f] font-semibold">{user.metadata.lastSignInTime}</p>
                                     </div>
                                 </div>
+                                
                             </div>
+                            <div className="card-actions justify-center">
+                                    <button onClick={handleLogOut} className="btn py-4 px-20 bg-red-600 font-bold text-white">Sign Out</button>
+                                </div>
                         </div>
                     </div>)
                     : (<div className="bg-[#252645] text-center py-48">
