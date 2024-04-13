@@ -12,10 +12,6 @@ const githubProvider = new GithubAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
 const twitterProvider = new TwitterAuthProvider();
 
-// react tostify
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -50,37 +46,22 @@ const AuthProvider = ({ children }) => {
     // Google login 
     const googleLogin = () => {
         setLoading(true);
-        return signInWithPopup(auth, googleProvider)
-            .then(() => {
-                toast.success("Logged in successfully.");
-            })
+        return signInWithPopup(auth, googleProvider);
     }
     // Github login
     const githubLogin = () => {
         setLoading(true);
-        return signInWithPopup(auth, githubProvider)
-            .then(() => {
-                toast.success("Logged in successfully.");
-            })
+        return signInWithPopup(auth, githubProvider);
     }
     // Facebook login
     const facebookLogin = () => {
         setLoading(true);
-        return signInWithPopup(auth, facebookProvider)
-            .then(() => {
-                toast.success("Logged in successfully.");
-            })
-            .catch(() => {
-                toast.error("Failed to logged with Facebook");
-            })
+        return signInWithPopup(auth, facebookProvider);
     }
     // Twitter login
     const twitterLogin = () => {
         setLoading(true);
-        return signInWithPopup(auth, twitterProvider)
-            .then(() => {
-                toast.success("Logged in successfully.");
-            })
+        return signInWithPopup(auth, twitterProvider);
     }
 
     // keep containing current user untill logout 
@@ -111,7 +92,6 @@ const AuthProvider = ({ children }) => {
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
-            <ToastContainer />
         </AuthContext.Provider >
     );
 };

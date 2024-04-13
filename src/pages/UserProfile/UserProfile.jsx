@@ -42,7 +42,7 @@ const UserProfile = () => {
                                 
                             </div>
                             <div className="card-actions justify-center">
-                                    <button onClick={handleLogOut} className="btn py-4 px-20 bg-red-600 font-bold text-white">Sign Out</button>
+                                    <button onClick={handleLogOut} className="btn py-4 px-20 bg-teal-600 font-bold text-white">Sign Out</button>
                                 </div>
                         </div>
                     </div>)

@@ -3,14 +3,16 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Shared/Navbar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+
+// react tostify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // react icons
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-// react tostify
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const { signIn, googleLogin, githubLogin, facebookLogin, twitterLogin } = useContext(AuthContext);
@@ -18,6 +20,35 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     console.log('location in the login page', location);
+
+    const googleLoginn = () => {
+        return googleLogin()
+            .then(() => {
+                toast("Wow so easy!"); // toast is not working
+                navigate(location?.state ? location.state : '/');
+            })
+    }
+    const githubLoginn = () => {
+        return githubLogin()
+            .then(() => {
+                alert('Login Successfully Completed'); // alert is not working
+                navigate(location?.state ? location.state : '/');
+            })
+    }
+    const facebookLoginn = () => {
+        return facebookLogin()
+            .then(() => {
+                alert('Login Successfully Completed');
+                navigate(location?.state ? location.state : '/');
+            })
+    }
+    const twitterLoginn = () => {
+        return twitterLogin()
+            .then(() => {
+                alert('Login Successfully Completed');
+                navigate(location?.state ? location.state : '/');
+            })
+    }
 
     const handleLogin = e => {
         e.preventDefault();
@@ -33,7 +64,7 @@ const Login = () => {
                 console.log(result.user);
                 // navigate after login 
                 navigate(location?.state ? location.state : '/');
-                toast.success("Logged in successfully.");
+                alert("Logged in successfully.");
             })
             .catch(() => {
                 setLoginError('Your email or password incorrect, try again');
@@ -56,7 +87,7 @@ const Login = () => {
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-bold text-teal-600">Password</span>
-                            </label> 
+                            </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
@@ -71,10 +102,10 @@ const Login = () => {
                         <div className="space-y-4 mt-2">
                             <h3 className="text-center border-b-2 pb-1 text-gray-700 font-semibold">Continue with</h3>
                             <ul className="flex gap-6 justify-center">
-                                <li onClick={() => googleLogin()} className="text-4xl"><button><FaGoogle /></button></li>
-                                <li onClick={() => githubLogin()} className="text-4xl"><button><FaGithub /></button></li>
-                                <li onClick={() => facebookLogin()} className="text-4xl"><button><FaFacebook /></button></li>
-                                <li onClick={() => twitterLogin()} className="text-4xl"><button><FaXTwitter /></button></li>
+                                <li onClick={() => googleLoginn()} className="text-4xl"><button><FaGoogle /></button></li>
+                                <li onClick={() => githubLoginn()} className="text-4xl"><button><FaGithub /></button></li>
+                                <li onClick={() => facebookLoginn()} className="text-4xl"><button><FaFacebook /></button></li>
+                                <li onClick={() => twitterLoginn()} className="text-4xl"><button><FaXTwitter /></button></li>
                             </ul>
                         </div>
                         <p className="mt-6">Dont have an account? <Link className="text-red-500 font-bold" to='/register'>Register</Link></p>
