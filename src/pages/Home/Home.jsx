@@ -1,4 +1,5 @@
 import Banner from "../Banner/Banner";
+import CropsGrowingLand from "../CropsGrowingLand/CropsGrowingLand";
 import Estate from "../Estate/Estate";
 import Footer from "../Footer/Footer";
 import Navbar from "../Shared/Navbar";
@@ -12,6 +13,7 @@ const Home = () => {
             <div className="w-11/12 md:max-w-6xl mx-auto">
                 <Banner></Banner>
                 <Estate></Estate>
+                <CropsGrowingLand></CropsGrowingLand>
             </div>
             <Footer></Footer>
         </div>

@@ -51,7 +51,7 @@ const Navbar = () => {
                         )}
                         {user && (
 
-                            <button onClick={handleLogout} className="btn px-4 md:px-8 bg-gray-600 text-white">Signout</button>
+                            <button onClick={handleLogout} className="btn px-4 md:px-8 bg-gray-600 text-white">Sign out</button>
 
                         )}
                     </div>
