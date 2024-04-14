@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 // react tostify
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // react icons
@@ -13,39 +13,42 @@ import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { IoEye } from "react-icons/io5";
+import { IoEyeOff } from "react-icons/io5";
 
 const Login = () => {
     const { signIn, googleLogin, githubLogin, facebookLogin, twitterLogin } = useContext(AuthContext);
     const [loginError, setLoginError] = useState([]);
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
     console.log('location in the login page', location);
 
     const googleLoginn = () => {
-        return googleLogin()
+        googleLogin()
             .then(() => {
-                toast("Wow so easy!"); // toast is not working
+                toast.success("Login successful with Google");
                 navigate(location?.state ? location.state : '/');
             })
     }
     const githubLoginn = () => {
-        return githubLogin()
+        githubLogin()
             .then(() => {
-                alert('Login Successfully Completed'); // alert is not working
+                toast.success("Login successful with Github");
                 navigate(location?.state ? location.state : '/');
             })
     }
     const facebookLoginn = () => {
-        return facebookLogin()
+        facebookLogin()
             .then(() => {
-                alert('Login Successfully Completed');
+                toast.success("Login successful with Facebook");
                 navigate(location?.state ? location.state : '/');
             })
     }
     const twitterLoginn = () => {
-        return twitterLogin()
+        twitterLogin()
             .then(() => {
-                alert('Login Successfully Completed');
+                toast.success("Login successful with Twitter");
                 navigate(location?.state ? location.state : '/');
             })
     }
@@ -64,7 +67,7 @@ const Login = () => {
                 console.log(result.user);
                 // navigate after login 
                 navigate(location?.state ? location.state : '/');
-                alert("Logged in successfully.");
+                toast.success("Login successful");
             })
             .catch(() => {
                 setLoginError('Your email or password incorrect, try again');
@@ -84,11 +87,20 @@ const Login = () => {
                             </label>
                             <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                         </div>
-                        <div className="form-control">
+                        <div className="form-control relative">
                             <label className="label">
                                 <span className="label-text font-bold text-teal-600">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                placeholder="password"
+                                className="input input-bordered" required />
+                            <span onClick={() => setShowPassword(!showPassword)} className="cursor-pointer absolute bottom-11 right-4 text-xl">
+                                {
+                                    showPassword ? <IoEyeOff /> : <IoEye />
+                                }
+                            </span>
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
@@ -113,7 +125,6 @@ const Login = () => {
                 </div>
             </div>
             <Footer></Footer>
-            <ToastContainer />
         </div>
     );
 };
