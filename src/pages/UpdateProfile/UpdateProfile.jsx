@@ -6,6 +6,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 // react toastify 
 import { ToastContainer, toast } from 'react-toastify';
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const UpdateProfile = () => {
     const { user, updateUserProfile, loading } = useContext(AuthContext);
@@ -29,6 +30,9 @@ const UpdateProfile = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Update Profile</title>
+            </Helmet>
             <Navbar></Navbar>
             {
                 user

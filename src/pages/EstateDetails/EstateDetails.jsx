@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer';
 import { GrStatusGoodSmall } from "react-icons/gr";
 import { FaLocationDot } from "react-icons/fa6";
 import { SiConvertio } from "react-icons/si";
+import { Helmet } from 'react-helmet';
 
 const EstateDetails = () => {
     const { id } = useParams();
@@ -13,6 +14,9 @@ const EstateDetails = () => {
 
     return (
         <div className='bg-[#D3D9D4]'>
+            <Helmet>
+                <title>Estate Details</title>
+            </Helmet>
             <Navbar></Navbar>
             <div className="card w-[94%] md:max-w-5xl mx-auto my-12 p-4 md:p-8 shadow-2xl">
                 <h2 className="card-title text-4xl font-bold mb-6">{estate.estate_title}</h2>

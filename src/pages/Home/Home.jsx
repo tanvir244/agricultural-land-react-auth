@@ -4,10 +4,15 @@ import FertileLand from "../FertileLand/FertileLand";
 import Footer from "../Footer/Footer";
 import OurSupport from "../OurSupport/OurSupport";
 import Navbar from "../Shared/Navbar";
+// react helmet
+import {Helmet} from "react-helmet";
 
 const Home = () => {
     return (
         <div>
+            <Helmet>
+                <title>Home</title>
+            </Helmet>
             <div className="relative z-10">
                 <Navbar></Navbar>
             </div>

@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // react icons
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -56,6 +57,9 @@ const Register = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Register</title>
+            </Helmet>
             <div className="w-11/12 md:max-w-6xl mx-auto">
                 <Navbar></Navbar>
             </div>

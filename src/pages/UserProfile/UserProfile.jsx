@@ -3,10 +3,15 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Shared/Navbar";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const UserProfile = () => {
-    const { user, logOut } = useContext(AuthContext);
-    console.log(user);
+    const { user, logOut, loading } = useContext(AuthContext);
+
+    if(loading){
+        return <p className="text-center mt-12"><span className="loading loading-spinner loading-lg"></span></p>
+    }
+
     const handleLogOut = () => {
         logOut()
         .then()
@@ -15,6 +20,9 @@ const UserProfile = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>User Profile</title>
+            </Helmet>
             <Navbar></Navbar>
             {
                 user

@@ -15,6 +15,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
     const { signIn, googleLogin, githubLogin, facebookLogin, twitterLogin } = useContext(AuthContext);
@@ -76,6 +77,9 @@ const Login = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
             <Navbar></Navbar>
             <div className="space-y-6 py-20 bg-[#d2d8d3]">
                 <h1 className="text-center text-4xl text-teal-700 font-bold my-2">Please Login</h1>
