@@ -24,11 +24,17 @@ const AuthProvider = ({ children }) => {
 
     // update user profile
     const updateUserProfile = (name, image) => {
-        setLoading(true);
-        updateProfile(auth.currentUser, {
+        setLoading(true); 
+        return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: image
-        })
+        }).then(() => {
+            setUser({...user, displayName: name, photoURL: image});
+            setLoading(false);
+        }).catch(error => {
+            console.error("Error updating profile:", error);
+            setLoading(false);
+        });
     }
 
     // sign in user 

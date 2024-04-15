@@ -16,6 +16,7 @@ const Navbar = () => {
         <li className="font-semibold"><NavLink to="/">Home</NavLink></li>
         <li className="font-semibold"><NavLink to="/user_profile">User Profile</NavLink></li>
         <li className="font-semibold"><NavLink to="/update_profile">Update Profile</NavLink></li>
+        <li className="font-semibold"><NavLink to="/secret_policy">Our Policy</NavLink></li>
     </>
 
     return (
@@ -30,7 +31,7 @@ const Navbar = () => {
                             {navLinks}
                         </ul>
                     </div>
-                    <a href="/" className="text-2xl md:text-4xl text-teal-800 font-bold ml-4 md:ml-8">Real Estate</a>
+                    <a href="/" className="text-xl md:text-3xl text-teal-800 font-bold ml-4 md:ml-8">Agricultural Land</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

@@ -8,6 +8,7 @@ import Register from "../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
+import OurPolicy from "../pages/OurPolicy/OurPolicy";
 
 const router = createBrowserRouter([
     {
@@ -26,11 +27,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/user_profile',
-                element: <UserProfile></UserProfile>
+                element: <PrivateRoute><UserProfile></UserProfile></PrivateRoute>
             },
             {
                 path: '/update_profile',
-                element: <UpdateProfile></UpdateProfile>
+                element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
             },
             {
                 path: '/login',
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/secret_policy',
+                element: <PrivateRoute><OurPolicy></OurPolicy></PrivateRoute>
             }
         ]
     }

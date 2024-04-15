@@ -11,7 +11,7 @@ const Footer = () => {
         <div style={cssStyle} className="">
             <footer className="footer text-white py-24 md:py-36 w-[85%] md:max-w-6xl mx-auto">
                 <aside>
-                    <h1 className="text-4xl font-bold text-teal-400">Real Estate</h1>                    
+                    <h1 className="text-4xl font-bold text-teal-400">Agricultural Land</h1>                    
                     <p className="text-base font-semibold">Real Estate Ltd.<br />Providing reliable land guidance support since 1992</p>
                 </aside>
                 <nav className="text-base font-semibold">
