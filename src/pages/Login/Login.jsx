@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Navbar from "../Shared/Navbar";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 // react tostify
@@ -17,6 +17,10 @@ import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
 import { Helmet } from "react-helmet";
 
+// AOS library 
+import 'aos/dist/aos.css';
+import AOS from 'aos'
+
 const Login = () => {
     const { signIn, googleLogin, githubLogin, facebookLogin, twitterLogin } = useContext(AuthContext);
     const [loginError, setLoginError] = useState([]);
@@ -24,6 +28,10 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     console.log('location in the login page', location);
+
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
     const googleLoginn = () => {
         googleLogin()
@@ -83,7 +91,7 @@ const Login = () => {
             <Navbar></Navbar>
             <div className="space-y-6 py-20 bg-[#d2d8d3]">
                 <h1 className="text-center text-4xl text-teal-700 font-bold my-2">Please Login</h1>
-                <div className="card shrink-0 w-11/12 md:max-w-sm mx-auto shadow-2xl bg-base-100">
+                <div data-aos="zoom-in-up" data-aos-duration="1000" className="card shrink-0 w-11/12 md:max-w-sm mx-auto shadow-2xl bg-base-100">
                     <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
                             <label className="label">

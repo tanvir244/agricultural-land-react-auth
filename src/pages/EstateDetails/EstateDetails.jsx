@@ -6,11 +6,21 @@ import { FaLocationDot } from "react-icons/fa6";
 import { SiConvertio } from "react-icons/si";
 import { Helmet } from 'react-helmet';
 
+// AOS library
+// AOS library 
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+import { useEffect } from 'react';
+
 const EstateDetails = () => {
     const { id } = useParams();
     const estates = useLoaderData();
     const estate = estates.find(estate => estate.id === parseInt(id));
     console.log(estate);
+
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
     return (
         <div className='bg-[#D3D9D4]'>
@@ -18,7 +28,7 @@ const EstateDetails = () => {
                 <title>Estate Details</title>
             </Helmet>
             <Navbar></Navbar>
-            <div className="card w-[94%] md:max-w-5xl mx-auto my-12 p-4 md:p-8 shadow-2xl">
+            <div data-aos="fade-up" data-aos-duration="1000" className="card w-[94%] md:max-w-5xl mx-auto my-12 p-4 md:p-8 shadow-2xl">
                 <h2 className="card-title text-4xl font-bold mb-6">{estate.estate_title}</h2>
                 <div className='mb-3 flex flex-col md:flex-row gap-2'>
                     <h2 className='bg-teal-700 px-4 flex md:items-center md:justify-center gap-2 py-1 text-white font-semibold rounded-lg'><span className='text-base'><GrStatusGoodSmall /></span> {estate.status}</h2>

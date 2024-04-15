@@ -1,19 +1,23 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Footer from "../Footer/Footer";
 import Navbar from "../Shared/Navbar";
 import { AuthContext } from "../../providers/AuthProvider";
 
-// react toastify 
-import { ToastContainer, toast } from 'react-toastify';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-const UpdateProfile = () => {
-    const { user, updateUserProfile, loading } = useContext(AuthContext);
+// AOS library 
+import 'aos/dist/aos.css';
+import AOS from 'aos'
+import { toast } from "react-toastify";
 
-    if(loading){
-        return <p className="text-center mt-12"><span className="loading loading-spinner loading-lg"></span></p>
-    }
+const UpdateProfile = () => {
+    const { user, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        AOS.init();
+    }, []);
 
     const handleUpdateProfile = e => {
         e.preventDefault();
@@ -22,11 +26,10 @@ const UpdateProfile = () => {
         const photo = form.get('photo');
 
         updateUserProfile(name, photo)
-            .then(() => {
-                toast('Wow updated'); // toast not working
-            })
+            toast.success("Successfully updated");
+            navigate('/');
+    };
 
-    }
 
     return (
         <div>
@@ -37,7 +40,7 @@ const UpdateProfile = () => {
             {
                 user
                     ? (<div className="bg-[#fce6d1] py-12">
-                        <div className="card w-11/12 md:w-3/4 lg:w-1/3 mx-auto bg-base-100 shadow-xl px-4 py-10 md:py-16 md:px-8 lg:p-8">
+                        <div data-aos="zoom-in-up" data-aos-duration="1000" className="card w-11/12 md:w-3/4 lg:w-1/3 mx-auto bg-base-100 shadow-xl px-4 py-10 md:py-16 md:px-8 lg:p-8">
                             <div>
                                 <img className="w-[210px] h-[210px] object-cover rounded-full mx-auto" src={user.photoURL} alt="Album" />
                             </div>
@@ -75,7 +78,6 @@ const UpdateProfile = () => {
                     </div>)
             }
             <Footer></Footer>
-            <ToastContainer></ToastContainer>
         </div>
     );
 };

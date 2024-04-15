@@ -8,6 +8,7 @@ import Navbar from "../Shared/Navbar";
 import {Helmet} from "react-helmet";
 
 const Home = () => {
+
     return (
         <div>
             <Helmet>

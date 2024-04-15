@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Navbar from "../Shared/Navbar";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 // react tostify
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // react icons
@@ -13,10 +13,19 @@ import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
 import { Helmet } from "react-helmet";
 
+// AOS library 
+import 'aos/dist/aos.css';
+import AOS from 'aos'
+
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const [registerError, setRegisterError] = useState([]);
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
     const handleRegister = e => {
         e.preventDefault();
@@ -43,16 +52,14 @@ const Register = () => {
 
         // create user 
         createUser(email, password)
-        .then(() => {
-            toast.success("Registration successfully complete.");
-            updateUserProfile(name, photo)
             .then(() => {
-                
+                updateUserProfile(name, photo);
+                toast.success("Registration successfully complete.");
+                navigate('/');
             })
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .catch(error => {
+                console.error(error.message);
+            })
     }
 
     return (
@@ -65,7 +72,7 @@ const Register = () => {
             </div>
             <div className="space-y-6 py-20 bg-[#d2d8d3]">
                 <h1 className="text-center text-4xl text-teal-700 font-bold my-2">Register Here</h1>
-                <div className="card shrink-0 w-11/12 md:w-[55%] lg:w-[35%] mx-auto shadow-2xl bg-base-100">
+                <div data-aos="zoom-in-up" data-aos-duration="1000" className="card shrink-0 w-11/12 md:w-[55%] lg:w-[35%] mx-auto shadow-2xl bg-base-100">
                     <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">
                             <label className="label">
@@ -84,21 +91,21 @@ const Register = () => {
                                 <span className="label-text font-bold text-teal-600">Photo URL</span>
                             </label>
                             <input type="text" name="photo" placeholder="Photo url" className="input input-bordered"
-                             required />
+                                required />
                         </div>
                         <div className="form-control relative">
                             <label className="label">
                                 <span className="label-text font-bold text-teal-600">Password</span>
                             </label>
-                            <input 
-                            type={showPassword ? "text" : "password"} 
-                            name="password" 
-                            placeholder="password" 
-                            className="input input-bordered" required />
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                placeholder="password"
+                                className="input input-bordered" required />
                             <span onClick={() => setShowPassword(!showPassword)} className="cursor-pointer absolute bottom-11 right-6 text-xl">
                                 {
-                                   showPassword ? <IoEyeOff /> : <IoEye />
-                                } 
+                                    showPassword ? <IoEyeOff /> : <IoEye />
+                                }
                             </span>
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
@@ -115,7 +122,7 @@ const Register = () => {
                 </div>
             </div>
             <Footer></Footer>
-            <ToastContainer />
+            {/* <ToastContainer /> */}
         </div>
     );
 };

@@ -1,16 +1,24 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Footer from "../Footer/Footer";
 import Navbar from "../Shared/Navbar";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-const UserProfile = () => {
-    const { user, logOut, loading } = useContext(AuthContext);
+// AOS library 
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 
-    if(loading){
-        return <p className="text-center mt-12"><span className="loading loading-spinner loading-lg"></span></p>
-    }
+const UserProfile = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    useEffect(() => {
+        AOS.init();
+    }, [])
+
+    // if(loading){
+    //     return <p className="text-center mt-12"><span className="loading loading-spinner loading-lg"></span></p>
+    // }
 
     const handleLogOut = () => {
         logOut()
@@ -27,7 +35,7 @@ const UserProfile = () => {
             {
                 user
                     ? (<div className="bg-[#fce6d1] py-12">
-                        <div className="card w-11/12 md:w-3/4 lg:w-1/3 mx-auto bg-base-100 shadow-xl px-4 py-10 md:py-16 md:px-8 lg:p-8">
+                        <div data-aos="zoom-in-up" data-aos-duration="1000" className="card w-11/12 md:w-3/4 lg:w-1/3 mx-auto bg-base-100 shadow-xl px-4 py-10 md:py-16 md:px-8 lg:p-8">
                             <div>
                                 <img className="w-[210px] h-[210px] object-cover rounded-full mx-auto" src={user.photoURL} alt="Album" />
                             </div>
