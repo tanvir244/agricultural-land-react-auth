@@ -21,13 +21,17 @@ import { Helmet } from "react-helmet";
 import 'aos/dist/aos.css';
 import AOS from 'aos'
 
+// React hook form
+import { useForm } from "react-hook-form";
+
 const Login = () => {
     const { signIn, googleLogin, githubLogin, facebookLogin, twitterLogin } = useContext(AuthContext);
     const [loginError, setLoginError] = useState([]);
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
-    console.log('location in the login page', location);
+    // react hook form
+    const { register, handleSubmit, formState: { errors }, } = useForm();
 
     useEffect(() => {
         AOS.init();
@@ -62,14 +66,8 @@ const Login = () => {
             })
     }
 
-    const handleLogin = e => {
-        e.preventDefault();
-        const form = new FormData(e.currentTarget);
-        const email = form.get('email');
-        const password = form.get('password');
-
-        // reset error 
-        setLoginError('');
+    const onSubmit = data => {
+        const { email, password } = data;
 
         signIn(email, password)
             .then(result => {
@@ -81,6 +79,7 @@ const Login = () => {
             .catch(() => {
                 setLoginError('Your email or password incorrect, try again');
             })
+
     }
 
     return (
@@ -92,12 +91,15 @@ const Login = () => {
             <div className="space-y-6 py-20 bg-[#d2d8d3]">
                 <h1 className="text-center text-4xl text-teal-700 font-bold my-2">Please Login</h1>
                 <div data-aos="zoom-in-up" data-aos-duration="1000" className="card shrink-0 w-11/12 md:max-w-sm mx-auto shadow-2xl bg-base-100">
-                    <form onSubmit={handleLogin} className="card-body">
+                    <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-bold text-teal-600">Email</span>
                             </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                            <input type="email" name="email" placeholder="email" className="input input-bordered"
+                                {...register("email", { required: true })}
+                            />
+                            {errors.email && <span className="text-red-500">This field is required</span>}
                         </div>
                         <div className="form-control relative">
                             <label className="label">
@@ -107,7 +109,10 @@ const Login = () => {
                                 type={showPassword ? "text" : "password"}
                                 name="password"
                                 placeholder="password"
-                                className="input input-bordered" required />
+                                className="input input-bordered"
+                                {...register("password", { required: true })}
+                            />
+                            {errors.password && <span className="text-red-500">This field is required</span>}
                             <span onClick={() => setShowPassword(!showPassword)} className="cursor-pointer absolute bottom-11 right-4 text-xl">
                                 {
                                     showPassword ? <IoEyeOff /> : <IoEye />
